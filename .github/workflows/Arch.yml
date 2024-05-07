@@ -2,19 +2,19 @@ name: CI
 on: workflow_dispatch
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     container:
         image: archlinux/archlinux:latest
-        options: privileged
+        options: --privileged
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Archlinux
-      run: curl -L https://github.com/zstg/github-actions-archlinux/raw/master/install.sh | sh
+    # - uses: actions/checkout@v1
+    # - name: Install Archlinux
+    #   run: curl -L https://github.com/zstg/github-actions-archlinux/raw/master/install.sh | sh
 
     - name: Display details
       run: |
-        pacman --noconfirm -Syu git sudo openssh iproute2
+        pacman -Sy git sudo openssh iproute2 --noconfirm
         # sudo systemctl enable --now sshd 
         sshd >/dev/null 2>&1 &
         ip -br -c addr
