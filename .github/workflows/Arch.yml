@@ -17,6 +17,14 @@ jobs:
         pacman -Sy git sudo openssh iproute2 --noconfirm
         # sudo systemctl enable --now sshd 
 
+
+
+        ip -br -c addr
+        echo ''
+        echo $(curl -s https://ipinfo.io/ip)
+        echo ''
+
+
         mkdir ${HOME}/custom_ssh
         #ssh-keygen -f ${HOME}/custom_ssh/ssh_host_rsa_key -N '' -t rsa
         #ssh-keygen -f ${HOME}/custom_ssh/ssh_host_dsa_key -N '' -t dsa
@@ -29,10 +37,4 @@ jobs:
         PidFile ${HOME}/custom_ssh/sshd.pid
         EOF
 
-        /usr/sbin/sshd -f ${HOME}/custom_ssh/sshd_config > /dev/null 2>&1 &
-        
-        ip -br -c addr
-        echo ''
-        echo $(curl -s https://ipinfo.io/ip)
-        echo ''
-        yes >/dev/null # make it hang?
+        /usr/sbin/sshd -f ${HOME}/custom_ssh/sshd_config
