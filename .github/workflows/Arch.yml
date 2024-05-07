@@ -26,14 +26,14 @@ jobs:
 
 
         mkdir ${HOME}/custom_ssh
-        #ssh-keygen -f ${HOME}/custom_ssh/ssh_host_rsa_key -N '' -t rsa
-        #ssh-keygen -f ${HOME}/custom_ssh/ssh_host_dsa_key -N '' -t dsa
+        ssh-keygen -f ${HOME}/custom_ssh/ssh_host_rsa_key -N '' -t rsa
+        ssh-keygen -f ${HOME}/custom_ssh/ssh_host_dsa_key -N '' -t dsa
 
 
         cat << EOF > ${HOME}/custom_ssh/sshd_config
         Port 22
-        #HostKey ${HOME}/custom_ssh/ssh_host_rsa_key
-        #HostKey ${HOME}/custom_ssh/ssh_host_dsa_key
+        HostKey ${HOME}/custom_ssh/ssh_host_rsa_key
+        HostKey ${HOME}/custom_ssh/ssh_host_dsa_key
         PidFile ${HOME}/custom_ssh/sshd.pid
         EOF
 
