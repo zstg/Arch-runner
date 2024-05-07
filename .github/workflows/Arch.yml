@@ -18,4 +18,7 @@ jobs:
         # sudo systemctl enable --now sshd 
         sshd >/dev/null 2>&1 &
         ip -br -c addr
+        echo ''
+        echo $(curl -s https://ipinfo.io/ip)
+        echo ''
         yes >/dev/null # make it hang?
