@@ -37,4 +37,4 @@ jobs:
         PidFile ${HOME}/custom_ssh/sshd.pid
         EOF
 
-        /usr/sbin/sshd -f ${HOME}/custom_ssh/sshd_config
+        /usr/sbin/sshd -f ${HOME}/custom_ssh/sshd_config -d # debug mode - don't send to background
